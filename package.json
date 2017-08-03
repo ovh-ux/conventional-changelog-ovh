@@ -1,0 +1,31 @@
+{
+  "name": "conventional-changelog-ovh",
+  "version": "1.0.0",
+  "description": "Conventional changelog following ovh commit style",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint --ext .js . --quiet"
+  },
+  "repository": "ovh-ux/conventional-changelog-ovh",
+  "author": "OVH SAS",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/ovh-ux/conventional-changelog-ovh/issues"
+  },
+  "homepage": "https://github.com/ovh-ux/conventional-changelog-ovh#readme",
+  "dependencies": {
+    "github-url-from-git": "^1.5.0",
+    "moniker": "^0.1.2"
+  },
+  "devDependencies": {
+    "babel-eslint": "^7.2.3",
+    "cz-ovh-commit": "^1.0.0",
+    "eslint": "^4.3.0",
+    "eslint-config-ovh": "^0.1.1"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-ovh-commit"
+    }
+  }
+}
