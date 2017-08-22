@@ -33,7 +33,7 @@ const writerOpts = {
             commit.type = ":tada: Features :tada:";
             commit.scope = "";
             commit.repeat = true;
-            commit.subject = "First commit"
+            commit.subject = "First commit";
         } else if (commit.type === "feat") {
             commit.type = ":sparkles: Features :sparkles:";
         } else if (commit.type === "fix") {
@@ -63,6 +63,7 @@ const writerOpts = {
         if (typeof commit.subject === "string") {
             // GitHub issue URLs.
             commit.subject = commit.subject.replace(/#([0-9]+)/g, `[#$1](${repoUrl}/issues/$1)`);
+
             // GitHub user URLs.
             commit.subject = commit.subject.replace(/@([a-zA-Z0-9_]+)/g, "[@$1](https://github.com/$1)");
             commit.subject = commit.subject;
