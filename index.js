@@ -30,12 +30,12 @@ const writerOpts = {
     transform (commit) {
         const repoUrl = issueUrl();
         if (commit.emoji === ":tada:") {
-            commit.type = "Features";
+            commit.type = ":tada: Features :tada:";
             commit.scope = "package";
         } else if (commit.type === "feat") {
-            commit.type = "Features";
+            commit.type = ":sparkles: Features :sparkles:";
         } else if (commit.type === "fix") {
-            commit.type = "Bug Fixes";
+            commit.type = ":ambulance: Bug Fixes :ambulance:";
         } else {
             return null;
         }
@@ -49,7 +49,6 @@ const writerOpts = {
         } else {
             scopes.push(commit.scope);
         }
-
 
         if (commit.scope === "*") {
             commit.scope = "";
@@ -76,8 +75,9 @@ const writerOpts = {
     headerPartial: readFileSync(path.resolve(__dirname, "templates/header.hbs"), "utf-8"),
     commitPartial: readFileSync(path.resolve(__dirname, "templates/commit.hbs"), "utf-8"),
     generateOn (commit, commits, context) {
+      context.title = context.title || names.choose();
         if (commit.version) {
-            context.title = names.choose();
+            scopes = [];
         }
         return commit.version;
     }
