@@ -14,13 +14,13 @@ try {
 
 function issueUrl () {
     if (pkgJson.repository && pkgJson.repository.url && ~pkgJson.repository.url.indexOf("github.com")) {
-        return gufg(pkgJson.repository.url) || "";
+        return gufg(pkgJson.repository.url);
     }
-    return "";
+    return `https://github.com/${pkgJson.repository}`;
 }
 
 const parserOpts = {
-    headerPattern: /^(:\w*:\s*)?(\w*)(?:\((.*)\))?\: (.*)$/,
+    headerPattern: /^(:\w*:)?\s*(\w*)(?:\((.*)\))?\:?\s*(.*)$/,
     headerCorrespondence: ["emoji", "type", "scope", "subject"]
 };
 
@@ -31,7 +31,9 @@ const writerOpts = {
         const repoUrl = issueUrl();
         if (commit.emoji === ":tada:") {
             commit.type = ":tada: Features :tada:";
-            commit.scope = "package";
+            commit.scope = "";
+            commit.repeat = true;
+            commit.subject = "First commit"
         } else if (commit.type === "feat") {
             commit.type = ":sparkles: Features :sparkles:";
         } else if (commit.type === "fix") {
@@ -60,8 +62,7 @@ const writerOpts = {
 
         if (typeof commit.subject === "string") {
             // GitHub issue URLs.
-            commit.subject = commit.subject.replace(/#([0-9]+)/g, (_, issue) => `[#${issue}](${repoUrl}/issues/${issue})`);
-
+            commit.subject = commit.subject.replace(/#([0-9]+)/g, `[#$1](${repoUrl}/issues/$1)`);
             // GitHub user URLs.
             commit.subject = commit.subject.replace(/@([a-zA-Z0-9_]+)/g, "[@$1](https://github.com/$1)");
             commit.subject = commit.subject;
@@ -75,7 +76,7 @@ const writerOpts = {
     headerPartial: readFileSync(path.resolve(__dirname, "templates/header.hbs"), "utf-8"),
     commitPartial: readFileSync(path.resolve(__dirname, "templates/commit.hbs"), "utf-8"),
     generateOn (commit, commits, context) {
-      context.title = context.title || names.choose();
+        context.title = context.title | names.choose();
         if (commit.version) {
             scopes = [];
         }
