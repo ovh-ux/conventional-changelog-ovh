@@ -77,9 +77,10 @@ const writerOpts = {
     headerPartial: readFileSync(path.resolve(__dirname, "templates/header.hbs"), "utf-8"),
     commitPartial: readFileSync(path.resolve(__dirname, "templates/commit.hbs"), "utf-8"),
     generateOn (commit, commits, context) {
-        context.title = context.title | names.choose();
+        context.title = context.title || names.choose();
         if (commit.version) {
             scopes = [];
+            context.title = names.choose();
         }
         return commit.version;
     }
