@@ -1,6 +1,6 @@
 {
   "name": "conventional-changelog-ovh",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Conventional changelog following ovh commit style",
   "main": "index.js",
   "scripts": {
