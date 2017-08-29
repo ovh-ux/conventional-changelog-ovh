@@ -20,7 +20,7 @@ function issueUrl () {
 }
 
 const parserOpts = {
-    headerPattern: /^(:\w*:)?\s*(\w*)(?:\((.*)\))?\:?\s*(.*)$/,
+    headerPattern: /^(:\w*:)?\s*(\w*)(?:\((.*?)\))?\:?\s*(.*)$/,
     headerCorrespondence: ["emoji", "type", "scope", "subject"]
 };
 
