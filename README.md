@@ -6,7 +6,13 @@
 
 [![NPM](https://nodei.co/npm/conventional-changelog-ovh.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/conventional-changelog-ovh/)
 
-Tool for unifying changelogs inside OVH
+Tool for unifying changelogs inside OVH.
+
+Rules are based on [conventional-changelog-angular](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-angular) but commits can also contain optional emoji in it.
+
+```
+:lipstick: style(index): styling of code
+```
 
 # Installation
 
@@ -15,7 +21,7 @@ in a terminal:
   npm i -g conventional-changelog-cli
 ```
 
-in the repos:
+in working repositories:
 ```bash
   npm install --save-dev conventional-changelog-ovh
   conventional-changelog -n ./node_modules/conventional-changelog-ovh --other-args

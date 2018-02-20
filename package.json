@@ -14,8 +14,7 @@
   },
   "homepage": "https://github.com/ovh-ux/conventional-changelog-ovh#readme",
   "dependencies": {
-    "github-url-from-git": "^1.5.0",
-    "moniker": "^0.1.2"
+    "conventional-changelog-angular": "^1.6.5"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",
